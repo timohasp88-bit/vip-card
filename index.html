@@ -6,27 +6,14 @@
   <title>Для Анастасии ✨</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Marck+Script&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-ivory: #f8f4ee;
-      --bg-champagne: #ece2d4;
-      --card-bg: rgba(255, 253, 250, 0.94);
-      --gold-main: #c59b5f;
-      --gold-dark: #8e6834;
-      --gold-light: #e6cfa7;
-      --text-main: #3b2f28;
-      --text-muted: #7c6a5e;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at 50% 20%, #fffcf8 0%, var(--bg-ivory) 55%, var(--bg-champagne) 100%);
-      color: var(--text-main);
+      background: radial-gradient(circle at 20% 15%, #3d241c 0%, #1c1014 48%, #0d070a 100%);
+      color: #fff8f0;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -36,95 +23,127 @@
       position: relative;
     }
 
+    /* Живые карамельно-золотые огни на фоне */
+    .bokeh {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: 0;
+      animation: floatBokeh 9s ease-in-out infinite alternate;
+    }
+    .b1 { width: 260px; height: 260px; background: rgba(245, 166, 35, 0.24); top: -40px; left: -50px; }
+    .b2 { width: 300px; height: 300px; background: rgba(232, 93, 117, 0.2); bottom: -60px; right: -40px; animation-delay: -3s; }
+    .b3 { width: 220px; height: 220px; background: rgba(255, 209, 102, 0.18); top: 45%; left: 55%; animation-delay: -6s; }
+
+    @keyframes floatBokeh {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(25px, -30px) scale(1.18); }
+    }
+
     /* Стартовый экран с переливающимися буквами туда-сюда */
     .welcome-splash {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, #fffdf9 0%, #efe4d6 100%);
+      background: radial-gradient(circle at center, #331d18 0%, #140b0e 70%, #090406 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      padding: 28px;
+      padding: 24px;
       text-align: center;
-      transition: opacity 0.85s ease, visibility 0.85s ease;
+      transition: opacity 0.9s ease, visibility 0.9s ease, transform 0.9s ease;
     }
     .welcome-splash.hide {
       opacity: 0;
       visibility: hidden;
+      transform: scale(1.06);
       pointer-events: none;
     }
-    .splash-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold-dark);
-      margin-bottom: 14px;
-      font-weight: 600;
-    }
+
     .welcome-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-style: italic;
-      font-size: clamp(2.6rem, 9vw, 4.2rem);
-      font-weight: 700;
-      line-height: 1.1;
-      padding: 4px 12px;
+      font-family: 'Marck Script', cursive;
+      font-size: clamp(3.1rem, 11vw, 4.8rem);
+      font-weight: 400;
+      line-height: 1.15;
+      padding: 8px 16px;
       background: linear-gradient(
         110deg,
-        #7a5425 0%,
-        #c59b5f 25%,
-        #fff1cc 50%,
-        #b88946 75%,
-        #7a5425 100%
+        #f59e0b 0%,
+        #fde68a 25%,
+        #ff8fa3 50%,
+        #34d399 75%,
+        #fbbf24 100%
       );
-      background-size: 250% auto;
+      background-size: 260% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 6px 18px rgba(197, 155, 95, 0.25));
-      animation: shimmerWave 3.2s ease-in-out infinite alternate;
+      filter: drop-shadow(0 0 24px rgba(251, 191, 36, 0.45));
+      animation: neonFlow 3s ease-in-out infinite alternate;
     }
-    @keyframes shimmerWave {
-      0% { background-position: 0% 50%; transform: scale(0.99); }
-      100% { background-position: 100% 50%; transform: scale(1.02); }
+    @keyframes neonFlow {
+      0% { background-position: 0% 50%; transform: translateY(0) scale(0.98); }
+      100% { background-position: 100% 50%; transform: translateY(-4px) scale(1.03); }
     }
+
     .welcome-sub {
-      margin-top: 14px;
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      max-width: 310px;
+      margin-top: 10px;
+      font-size: 0.96rem;
+      color: #f3d5b5;
+      max-width: 320px;
       line-height: 1.5;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
     }
+
+    /* Переливающаяся кнопка открытия с бегущим бликом */
     .btn-open-card {
       margin-top: 32px;
-      padding: 15px 38px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 16px 38px;
+      border: none;
       border-radius: 99px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: #ffffff;
-      background: linear-gradient(135deg, #cfa568 0%, #9f7339 100%);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #231109;
+      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 50%, #fb7185 100%);
+      background-size: 200% auto;
       cursor: pointer;
-      box-shadow: 0 12px 28px rgba(159, 115, 57, 0.32);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.55), 0 10px 25px rgba(0, 0, 0, 0.5);
+      animation: btnGlow 2.8s ease-in-out infinite alternate;
     }
-    .btn-open-card:active {
-      transform: scale(0.97);
+    .btn-open-card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 45%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+      transform: rotate(25deg);
+      animation: shineSweep 2.6s infinite;
     }
-       .card {
+    @keyframes btnGlow {
+      0% { background-position: 0% 50%; transform: scale(1); }
+      100% { background-position: 100% 50%; transform: scale(1.05); }
+    }
+    @keyframes shineSweep {
+      0% { left: -60%; }
+      45%, 100% { left: 130%; }
+    }
+        .card {
       width: 100%;
       max-width: 450px;
-      background: var(--card-bg);
-      border: 1px solid rgba(197, 155, 95, 0.45);
-      border-radius: 24px;
-      padding: 30px 24px 26px;
+      background: radial-gradient(circle at top, rgba(66, 38, 30, 0.72) 0%, rgba(28, 15, 20, 0.85) 100%);
+      backdrop-filter: blur(18px);
+      border-radius: 36px;
+      padding: 28px 22px 26px;
       text-align: center;
       box-shadow:
-        0 24px 55px rgba(84, 62, 44, 0.12),
-        inset 0 0 0 6px #fffdf9,
-        inset 0 0 0 7px rgba(197, 155, 95, 0.28);
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 0 40px rgba(245, 158, 11, 0.16);
       position: relative;
       z-index: 10;
     }
@@ -133,135 +152,139 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       gap: 8px;
     }
     .badge {
-      background: rgba(197, 155, 95, 0.12);
-      color: var(--gold-dark);
-      border: 1px solid rgba(197, 155, 95, 0.35);
-      padding: 5px 14px;
+      background: rgba(251, 191, 36, 0.14);
+      color: #fde68a;
+      padding: 6px 14px;
       border-radius: 99px;
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
     }
     .btn-music {
-      background: rgba(197, 155, 95, 0.12);
-      color: var(--gold-dark);
-      border: 1px solid rgba(197, 155, 95, 0.35);
-      padding: 5px 14px;
+      background: rgba(251, 113, 133, 0.18);
+      color: #fecdd3;
+      border: none;
+      padding: 6px 14px;
       border-radius: 99px;
       font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
     }
     .btn-music.playing {
-      background: rgba(114, 145, 118, 0.18);
-      color: #3c5940;
-      border-color: rgba(114, 145, 118, 0.45);
+      background: rgba(52, 211, 153, 0.22);
+      color: #a7f3d0;
+      box-shadow: 0 0 15px rgba(52, 211, 153, 0.25);
     }
 
-    .floral-emblem {
-      width: 112px;
-      height: 86px;
-      margin: 2px auto 6px;
+    /* Живой букет роз */
+    .living-rose {
+      width: 120px;
+      height: 92px;
+      margin: 0 auto 4px;
       display: block;
-      filter: drop-shadow(0 6px 12px rgba(142, 104, 52, 0.12));
+      filter: drop-shadow(0 8px 18px rgba(244, 63, 94, 0.35));
+      animation: flowerSway 3.6s ease-in-out infinite alternate;
+    }
+    @keyframes flowerSway {
+      0% { transform: rotate(-3deg) scale(0.98); }
+      100% { transform: rotate(3deg) scale(1.04); }
     }
 
     h1 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.85rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text-main);
-      line-height: 1.18;
+      font-family: 'Marck Script', cursive;
+      font-size: 2.15rem;
+      font-weight: 400;
+      margin-bottom: 8px;
+      background: linear-gradient(90deg, #fde68a, #ffb4a2, #fde68a);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: neonFlow 4s ease-in-out infinite alternate;
+      line-height: 1.2;
     }
     .story {
-      color: var(--text-muted);
+      color: #ebd5c1;
       font-size: 0.88rem;
-      line-height: 1.6;
+      line-height: 1.55;
       margin-bottom: 18px;
     }
 
+    /* Мягкое облако для пожеланий без строгих рамок */
     .wish-box {
-      background: linear-gradient(180deg, #fcf9f4 0%, #f7f0e6 100%);
-      border: 1px solid rgba(197, 155, 95, 0.35);
-      border-radius: 16px;
+      background: radial-gradient(circle at center, rgba(255, 228, 196, 0.12) 0%, rgba(20, 10, 14, 0.45) 100%);
+      border-radius: 24px;
       padding: 18px 16px;
       min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 14px;
-      font-size: 0.93rem;
-      line-height: 1.52;
-      color: #4a3b32;
-      box-shadow: inset 0 2px 8px rgba(197, 155, 95, 0.08);
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #fff3e0;
+      box-shadow: inset 0 0 22px rgba(251, 191, 36, 0.12);
+      transition: transform 0.22s ease, opacity 0.22s ease;
     }
-    .wish-box.pop { transform: scale(0.98); opacity: 0.55; }
+    .wish-box.pop { transform: scale(0.96); opacity: 0.5; }
 
+    /* Переливающаяся кнопка пожеланий с бегущим бликом */
     .btn-warm {
       width: 100%;
-      padding: 14px 18px;
+      padding: 15px 18px;
       border: none;
-      border-radius: 14px;
+      border-radius: 99px;
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: #ffffff;
-      background: linear-gradient(135deg, #cfa568 0%, #9f7339 100%);
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #241008;
+      background: linear-gradient(120deg, #fde68a 0%, #f59e0b 50%, #fb7185 100%);
+      background-size: 200% auto;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(159, 115, 57, 0.25);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+      animation: btnGlow 3s ease-in-out infinite alternate;
     }
-    .btn-warm:active { transform: scale(0.98); }
+    .btn-warm::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+      transform: rotate(25deg);
+      animation: shineSweep 3.2s infinite;
+    }
+    .btn-warm:active { transform: scale(0.97); }
 
     .counter {
       margin-top: 9px;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      letter-spacing: 0.02em;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px 0 16px;
-      gap: 10px;
-    }
-    .divider::before, .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(197, 155, 95, 0.45), transparent);
-    }
-    .divider span {
-      color: var(--gold-main);
-      font-size: 0.85rem;
+      font-size: 0.75rem;
+      color: #cfa987;
     }
 
     .scratch-title {
-      font-size: 0.84rem;
+      margin-top: 22px;
+      font-size: 0.86rem;
       font-weight: 600;
-      color: var(--gold-dark);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      color: #fde68a;
       margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(251, 191, 36, 0.4);
     }
+
     .scratch-wrap {
       position: relative;
       width: 100%;
-      height: 205px;
-      border-radius: 16px;
+      height: 215px;
+      border-radius: 26px;
       overflow: hidden;
-      border: 1px solid rgba(197, 155, 95, 0.5);
-      background: radial-gradient(circle at center, #fffdf9 0%, #f5ece0 100%);
+      background: radial-gradient(circle at center, #4a2a22 0%, #211015 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -269,25 +292,46 @@
       padding: 14px;
       user-select: none;
       touch-action: none;
-      box-shadow: inset 0 0 18px rgba(197, 155, 95, 0.14);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 0 25px rgba(251, 191, 36, 0.18);
     }
+
+    /* Танцующий и машущий лапкой плюшевый мишка */
     .plush-bear {
-      width: 88px;
-      height: 88px;
-      margin-bottom: 4px;
-      filter: drop-shadow(0 6px 10px rgba(92, 64, 40, 0.18));
-      animation: bearFloat 2.4s ease-in-out infinite;
+      width: 96px;
+      height: 96px;
+      margin-bottom: 2px;
+      filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
+      animation: bearDance 1.8s ease-in-out infinite alternate;
+      transform-origin: bottom center;
     }
-    @keyframes bearFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
+    @keyframes bearDance {
+      0% { transform: rotate(-4deg) translateY(0) scale(0.98); }
+      50% { transform: rotate(0deg) translateY(-5px) scale(1.02); }
+      100% { transform: rotate(4deg) translateY(0) scale(0.98); }
     }
+    .bear-paw-wave {
+      transform-origin: 96px 88px;
+      animation: wavePaw 1.1s ease-in-out infinite alternate;
+    }
+    @keyframes wavePaw {
+      0% { transform: rotate(-10deg); }
+      100% { transform: rotate(22deg); }
+    }
+    .bear-heart-beat {
+      transform-origin: 70px 96px;
+      animation: heartPulse 0.95s ease-in-out infinite alternate;
+    }
+    @keyframes heartPulse {
+      0% { transform: scale(0.94); }
+      100% { transform: scale(1.1); }
+    }
+
     .secret-content {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #7a4938;
-      line-height: 1.25;
+      font-family: 'Marck Script', cursive;
+      font-size: 1.75rem;
+      color: #fde68a;
+      line-height: 1.2;
+      text-shadow: 0 0 16px rgba(251, 191, 36, 0.5);
       z-index: 1;
     }
     .secret-sub {
@@ -295,8 +339,8 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.78rem;
       font-weight: 500;
-      color: var(--text-muted);
-      margin-top: 4px;
+      color: #f3d5b5;
+      margin-top: 3px;
     }
     canvas#scratchCanvas {
       position: absolute;
@@ -311,158 +355,120 @@
     .particle {
       position: fixed;
       pointer-events: none;
-      font-size: 19px;
+      font-size: 22px;
       z-index: 999;
       animation: flyUp 1.5s ease-out forwards;
     }
     @keyframes flyUp {
-      0% { opacity: 1; transform: translateY(0) scale(0.85); }
-      100% { opacity: 0; transform: translateY(-130px) scale(1.3); }
+      0% { opacity: 1; transform: translateY(0) scale(0.8); }
+      100% { opacity: 0; transform: translateY(-140px) scale(1.4); }
     }
   </style>
 </head>
-  <body>
+<body>
 
-  <!-- Стартовый экран -->
+  <div class="bokeh b1"></div>
+  <div class="bokeh b2"></div>
+  <div class="bokeh b3"></div>
+
   <div class="welcome-splash" id="splash">
-    <div class="splash-tag">Personal Invitation</div>
-    <div class="welcome-title">Для Анастасии</div>
-    <div class="welcome-sub">Особое приглашение и тёплые слова, созданные специально для тебя</div>
-    <button class="btn-open-card" id="openCardBtn">Открыть приглашение</button>
+    <div class="welcome-title">Для Анастасии ✨</div>
+    <div class="welcome-sub">Маленькое волшебство и особое приглашение только для тебя</div>
+    <button class="btn-open-card" id="openCardBtn">Открыть приглашение 💌</button>
   </div>
 
   <div class="card">
     <div class="top-bar">
-      <div class="badge">Invitation</div>
+      <div class="badge">✨ Для тебя</div>
       <button class="btn-music" id="musicBtn">🎵 Включить песню</button>
     </div>
 
-    <!-- Детальная объёмная роза с лепестками и листьями -->
-    <svg class="floral-emblem" viewBox="0 0 160 120" xmlns="http://w3.org">
+    <svg class="living-rose" viewBox="0 0 160 120" xmlns="http://w3.org">
       <defs>
         <radialGradient id="petalOuter" cx="45%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#f7d6dc"/>
-          <stop offset="65%" stop-color="#e3a6b3"/>
-          <stop offset="100%" stop-color="#c47c8c"/>
+          <stop offset="0%" stop-color="#ffccd5"/>
+          <stop offset="60%" stop-color="#ff758f"/>
+          <stop offset="100%" stop-color="#c9184a"/>
         </radialGradient>
         <radialGradient id="petalMid" cx="50%" cy="30%" r="65%">
-          <stop offset="0%" stop-color="#fbe4e8"/>
-          <stop offset="60%" stop-color="#e8b0bc"/>
-          <stop offset="100%" stop-color="#cc8595"/>
-        </radialGradient>
-        <radialGradient id="petalInner" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#fff0f3"/>
-          <stop offset="55%" stop-color="#eab5c0"/>
-          <stop offset="100%" stop-color="#b86d7e"/>
+          <stop offset="0%" stop-color="#ffe5ec"/>
+          <stop offset="60%" stop-color="#ff8fa3"/>
+          <stop offset="100%" stop-color="#a4133c"/>
         </radialGradient>
         <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#9cb396"/>
-          <stop offset="100%" stop-color="#698264"/>
+          <stop offset="0%" stop-color="#74c69d"/>
+          <stop offset="100%" stop-color="#2d6a4f"/>
         </linearGradient>
       </defs>
-
-      <!-- Листья -->
       <path d="M52,72 C28,66 16,78 14,90 C28,92 44,86 55,76 Z" fill="url(#leafGrad)"/>
-      <path d="M18,88 Q35,80 52,75" stroke="#536b4e" stroke-width="1.2" fill="none"/>
       <path d="M108,72 C132,66 144,78 146,90 C132,92 116,86 105,76 Z" fill="url(#leafGrad)"/>
-      <path d="M142,88 Q125,80 108,75" stroke="#536b4e" stroke-width="1.2" fill="none"/>
-      <path d="M62,84 C46,94 42,106 46,114 C56,110 66,98 68,86 Z" fill="#829b7c"/>
-      <path d="M98,84 C114,94 118,106 114,114 C104,110 94,98 92,86 Z" fill="#829b7c"/>
-
-      <!-- Внешние лепестки розы -->
+      <path d="M62,84 C46,94 42,106 46,114 C56,110 66,98 68,86 Z" fill="#40916c"/>
+      <path d="M98,84 C114,94 118,106 114,114 C104,110 94,98 92,86 Z" fill="#40916c"/>
       <path d="M80,22 C56,22 42,40 46,62 C50,82 66,90 80,90 C94,90 110,82 114,62 C118,40 104,22 80,22 Z" fill="url(#petalOuter)"/>
       <path d="M48,46 C34,54 36,76 54,86 C64,91 74,88 76,80 C62,74 52,60 48,46 Z" fill="url(#petalOuter)"/>
       <path d="M112,46 C126,54 124,76 106,86 C96,91 86,88 84,80 C98,74 108,60 112,46 Z" fill="url(#petalOuter)"/>
-
-      <!-- Средние лепестки -->
-      <path d="M80,28 C62,28 52,42 55,60 C58,76 70,82 80,82 C90,82 102,76 105,60 C108,42 98,28 80,28 Z" fill="url(#petalMid)"/>
-      <path d="M56,48 C48,60 56,78 76,82 C70,72 64,60 56,48 Z" fill="#d994a3" opacity="0.7"/>
-      <path d="M104,48 C112,60 104,78 84,82 C90,72 96,60 104,48 Z" fill="#d994a3" opacity="0.7"/>
-
-      <!-- Внутренний бутон и завиток -->
-      <path d="M80,34 C68,34 61,44 63,56 C65,68 73,73 80,73 C87,73 95,68 97,56 C99,44 92,34 80,34 Z" fill="url(#petalInner)"/>
-      <path d="M68,48 C72,40 88,40 91,49 C93,56 85,62 78,61 C72,60 69,54 73,49 C76,45 83,46 84,50" stroke="#b56779" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M80,30 C64,30 55,42 58,58 C61,72 71,78 80,78 C89,78 99,72 102,58 C105,42 96,30 80,30 Z" fill="url(#petalMid)"/>
+      <path d="M68,48 C72,40 88,40 91,49 C93,56 85,62 78,61 C72,60 69,54 73,49 C76,45 83,46 84,50" stroke="#800f2f" stroke-width="2" fill="none" stroke-linecap="round"/>
     </svg>
 
-    <h1>Анастасия, приглашаю тебя на свидание</h1>
+    <h1>Анастасия, приглашаю тебя на свидание ✨</h1>
     <p class="story">
-      Хочу провести с тобой красивый, тёплый вечер вдвоём. А пока ты собираешься — открывай послания для настроения и сотри золотой слой внизу.
+      Хочу провести с тобой красивый, тёплый вечер вдвоём. Нажимай на сияющую кнопку за порцией тепла и сотри золотой слой внизу!
     </p>
 
     <div class="wish-box" id="wishBox">
       Нажми на кнопку ниже, чтобы открыть первое послание ✨
     </div>
 
-    <button class="btn-warm" id="warmBtn">Получить порцию тепла</button>
+    <button class="btn-warm" id="warmBtn">Получить порцию тепла ✨</button>
     <div class="counter" id="counter">Открыто посланий: 0 из 65</div>
 
-    <div class="divider"><span>✦</span></div>
-
-    <div class="scratch-title">Сотри золотую фольгу пальцем</div>
+    <div class="scratch-title">🎁 Сотри золотой слой пальцем:</div>
     <div class="scratch-wrap" id="wrap">
-      <!-- Реалистичный объёмный плюшевый мишка -->
       <svg class="plush-bear" viewBox="0 0 140 140" xmlns="http://w3.org">
         <defs>
           <radialGradient id="furMain" cx="42%" cy="35%" r="65%">
-            <stop offset="0%" stop-color="#e3bc96"/>
-            <stop offset="60%" stop-color="#c49366"/>
-            <stop offset="100%" stop-color="#96683f"/>
+            <stop offset="0%" stop-color="#f3d5b5"/>
+            <stop offset="60%" stop-color="#d4a373"/>
+            <stop offset="100%" stop-color="#9c6644"/>
           </radialGradient>
           <radialGradient id="furMuzzle" cx="50%" cy="40%" r="60%">
-            <stop offset="0%" stop-color="#fff8ef"/>
-            <stop offset="75%" stop-color="#f2dec4"/>
-            <stop offset="100%" stop-color="#d9bc98"/>
+            <stop offset="0%" stop-color="#fffdf9"/>
+            <stop offset="75%" stop-color="#faedcd"/>
+            <stop offset="100%" stop-color="#e6ccb2"/>
           </radialGradient>
           <radialGradient id="heartSilk" cx="38%" cy="30%" r="68%">
-            <stop offset="0%" stop-color="#f28b9c"/>
-            <stop offset="55%" stop-color="#cf556a"/>
-            <stop offset="100%" stop-color="#963244"/>
+            <stop offset="0%" stop-color="#ff8fa3"/>
+            <stop offset="55%" stop-color="#ff4d6d"/>
+            <stop offset="100%" stop-color="#a4133c"/>
           </radialGradient>
         </defs>
-
-        <!-- Лапки -->
-        <ellipse cx="44" cy="112" rx="14" ry="11" fill="url(#furMain)"/>
-        <ellipse cx="96" cy="112" rx="14" ry="11" fill="url(#furMain)"/>
-        <ellipse cx="44" cy="113" rx="8" ry="6" fill="#edd3b4"/>
-        <ellipse cx="96" cy="113" rx="8" ry="6" fill="#edd3b4"/>
-
-        <!-- Тело -->
+        <ellipse cx="44" cy="114" rx="14" ry="11" fill="url(#furMain)"/>
+        <ellipse cx="96" cy="114" rx="14" ry="11" fill="url(#furMain)"/>
         <ellipse cx="70" cy="96" rx="28" ry="26" fill="url(#furMain)"/>
-
-        <!-- Ушки -->
         <circle cx="41" cy="34" r="14" fill="url(#furMain)"/>
-        <circle cx="41" cy="34" r="8" fill="#ebd0b0"/>
+        <circle cx="41" cy="34" r="8" fill="#faedcd"/>
         <circle cx="99" cy="34" r="14" fill="url(#furMain)"/>
-        <circle cx="99" cy="34" r="8" fill="#ebd0b0"/>
-
-        <!-- Голова -->
+        <circle cx="99" cy="34" r="8" fill="#faedcd"/>
         <ellipse cx="70" cy="56" rx="34" ry="30" fill="url(#furMain)"/>
-
-        <!-- Мордочка -->
         <ellipse cx="70" cy="64" rx="15" ry="12" fill="url(#furMuzzle)"/>
-        <!-- Носик с бликом -->
         <ellipse cx="70" cy="59" rx="5.5" ry="3.8" fill="#3d2b22"/>
-        <ellipse cx="68.5" cy="58" rx="2" ry="1" fill="#ffffff" opacity="0.65"/>
-        <!-- Улыбка -->
         <path d="M70,63 L70,67 M63,68 Q70,73 77,68" stroke="#3d2b22" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-        <!-- Глазки с живым бликом -->
-        <circle cx="56" cy="49" r="3.6" fill="#2b1e18"/>
-        <circle cx="57.2" cy="47.8" r="1.3" fill="#ffffff"/>
-        <circle cx="84" cy="49" r="3.6" fill="#2b1e18"/>
-        <circle cx="85.2" cy="47.8" r="1.3" fill="#ffffff"/>
-
-        <!-- Атласное сердце в лапках -->
-        <path d="M70,118 C70,118 45,101 45,87 C45,79 52,74 59,78 C64,81 70,86 70,86 C70,86 76,81 81,78 C88,74 95,79 95,87 C95,101 70,118 70,118 Z" fill="url(#heartSilk)"/>
-        <path d="M53,83 C55,79 60,79 62,82" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" fill="none" opacity="0.55"/>
-
-        <!-- Верхние лапки, обнимающие сердце -->
+        <circle cx="56" cy="49" r="3.8" fill="#2b1e18"/>
+        <circle cx="57.2" cy="47.8" r="1.4" fill="#ffffff"/>
+        <circle cx="84" cy="49" r="3.8" fill="#2b1e18"/>
+        <circle cx="85.2" cy="47.8" r="1.4" fill="#ffffff"/>
+        <g class="bear-heart-beat">
+          <path d="M70,118 C70,118 45,101 45,87 C45,79 52,74 59,78 C64,81 70,86 70,86 C70,86 76,81 81,78 C88,74 95,79 95,87 C95,101 70,118 70,118 Z" fill="url(#heartSilk)"/>
+        </g>
         <ellipse cx="47" cy="92" rx="10" ry="7" transform="rotate(-25 47 92)" fill="url(#furMain)"/>
-        <ellipse cx="93" cy="92" rx="10" ry="7" transform="rotate(25 93 92)" fill="url(#furMain)"/>
+        <g class="bear-paw-wave">
+          <ellipse cx="102" cy="82" rx="11" ry="7.5" transform="rotate(-35 102 82)" fill="url(#furMain)"/>
+        </g>
       </svg>
 
       <div class="secret-content">
-        Я зайду за тобой?
+        Я зайду за тобой? ✨
         <span class="secret-sub">Напиши мне, во сколько тебе будет удобно 💛</span>
       </div>
       <canvas id="scratchCanvas"></canvas>
@@ -538,7 +544,7 @@
       "Ты сияешь ярче любых звёзд — просто оставайся собой ✨",
       "И самое главное: знай, что о тебе думают с огромным теплом и желают тебе самого большого счастья!"
     ];
-          const splash = document.getElementById('splash');
+         const splash = document.getElementById('splash');
     const openCardBtn = document.getElementById('openCardBtn');
     const wishBox = document.getElementById('wishBox');
     const warmBtn = document.getElementById('warmBtn');
@@ -565,14 +571,14 @@
       musicBtn.classList.remove('playing');
     }
 
-    function spawnParticles(x, y, count = 6) {
-      const icons = ['✨', '🤍', '🌸', '💛', '✦'];
+    function spawnParticles(x, y, count = 8) {
+      const icons = ['✨', '💛', '💖', '🌸', '🌟', '🧸'];
       for (let i = 0; i < count; i++) {
         const el = document.createElement('div');
         el.className = 'particle';
         el.textContent = icons[Math.floor(Math.random() * icons.length)];
-        el.style.left = (x + (Math.random() - 0.5) * 140) + 'px';
-        el.style.top = (y + (Math.random() - 0.5) * 40) + 'px';
+        el.style.left = (x + (Math.random() - 0.5) * 160) + 'px';
+        el.style.top = (y + (Math.random() - 0.5) * 50) + 'px';
         document.body.appendChild(el);
         setTimeout(() => el.remove(), 1500);
       }
@@ -581,8 +587,8 @@
     openCardBtn.addEventListener('click', (e) => {
       splash.classList.add('hide');
       startMusic();
-      spawnParticles(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, 10);
-      setTimeout(initCanvas, 50);
+      spawnParticles(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, 14);
+      setTimeout(initCanvas, 60);
     });
 
     musicBtn.addEventListener('click', () => {
@@ -609,7 +615,7 @@
       }, 150);
 
       counter.textContent = `Открыто посланий: ${openedCount} из ${wishes.length}`;
-      spawnParticles(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, 6);
+      spawnParticles(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, 8);
     });
 
     const canvas = document.getElementById('scratchCanvas');
@@ -624,17 +630,17 @@
       canvas.width = wrap.offsetWidth;
       canvas.height = wrap.offsetHeight;
       const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grad.addColorStop(0, '#c89d5c');
-      grad.addColorStop(0.35, '#eed7a8');
-      grad.addColorStop(0.7, '#cfa463');
-      grad.addColorStop(1, '#a97b3b');
+      grad.addColorStop(0, '#f59e0b');
+      grad.addColorStop(0.35, '#fde68a');
+      grad.addColorStop(0.7, '#f59e0b');
+      grad.addColorStop(1, '#d97706');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#4a3520';
-      ctx.font = '600 13px Montserrat, sans-serif';
+      ctx.fillStyle = '#241008';
+      ctx.font = '700 14px Montserrat, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('✦ СОТРИ ЗОЛОТОЙ СЛОЙ ПАЛЬЦЕМ ✦', canvas.width / 2, canvas.height / 2 + 5);
+      ctx.fillText('✨ СОТРИ ЗОЛОТОЙ СЛОЙ ПАЛЬЦЕМ ✨', canvas.width / 2, canvas.height / 2 + 5);
     }
 
     function revealAll() {
@@ -643,7 +649,7 @@
       canvas.style.opacity = '0';
       setTimeout(() => { canvas.style.display = 'none'; }, 750);
       const rect = wrap.getBoundingClientRect();
-      spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, 14);
+      spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, 18);
     }
 
     function scratch(x, y) {
@@ -661,8 +667,9 @@
 
     function getPos(e) {
       const rect = canvas.getBoundingClientRect();
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const touch = e.touches && e.touches[0];
+      const clientX = touch ? touch.clientX : e.clientX;
+      const clientY = touch ? touch.clientY : e.clientY;
       return { x: clientX - rect.left, y: clientY - rect.top };
     }
 
@@ -679,3 +686,4 @@
   </script>
 </body>
 </html>
+ 

@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- 1. ЗДЕСЬ МЕНЯЕМ ИМЯ ВО ВКЛАДКЕ -->
-  <title>Для Анастасии ✨</title>
+  <title>Для Анастасии 🌸</title>
   <style>
     :root {
-      --bg: #0f172a;
-      --card: rgba(30, 41, 59, 0.88);
-      --accent: #3b82f6;
-      --gold: #f59e0b;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --border: rgba(148, 163, 184, 0.25);
+      --bg-top: #fdf8f5;
+      --bg-bottom: #f3e5dc;
+      --card: rgba(255, 252, 249, 0.92);
+      --accent: #d48c70;
+      --accent-dark: #b86b52;
+      --rose: #e6a4b4;
+      --text: #4a3b32;
+      --muted: #8c766a;
+      --border: rgba(212, 140, 112, 0.28);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
     body {
-      background: radial-gradient(circle at top, #1e293b 0%, #070b14 100%);
+      background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -28,12 +34,26 @@
       position: relative;
     }
 
-    /* Стартовая заставка с кнопкой для мгновенного запуска песни */
+    .bg-flower {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.75;
+    }
+    .bg-flower.top-left { top: -20px; left: -20px; width: 170px; }
+    .bg-flower.bottom-right { bottom: -20px; right: -20px; width: 190px; transform: rotate(180deg); }
+
     .welcome-splash {
-      position: fixed; inset: 0;
-      background: radial-gradient(circle at center, #1e293b 0%, #070b14 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      z-index: 9999; padding: 24px; text-align: center;
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #fffaf7 0%, #f1dfd3 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 24px;
+      text-align: center;
       transition: opacity 0.8s ease, visibility 0.8s ease;
     }
     .welcome-splash.hide {
@@ -44,47 +64,44 @@
     .welcome-title {
       font-family: Georgia, "Times New Roman", serif;
       font-style: italic;
-      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      font-size: clamp(2.1rem, 7vw, 3.4rem);
       font-weight: 700;
-      background: linear-gradient(120deg, #fde68a, #f59e0b, #60a5fa, #34d399);
-      background-size: 200% auto;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.3));
-      animation: shimmer 4s linear infinite;
+      color: var(--accent-dark);
+      text-shadow: 0 4px 18px rgba(212, 140, 112, 0.22);
     }
     .welcome-sub {
-      margin-top: 12px; font-size: 0.98rem; color: #cbd5e1; letter-spacing: 0.04em;
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
     }
     .btn-open-card {
-      margin-top: 28px;
-      padding: 16px 32px;
+      margin-top: 26px;
+      padding: 15px 34px;
       border: none;
       border-radius: 99px;
       font-size: 1.05rem;
-      font-weight: 700;
-      color: #0f172a;
-      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #e29578 0%, #c87459 100%);
       cursor: pointer;
-      box-shadow: 0 12px 30px rgba(245, 158, 11, 0.45);
+      box-shadow: 0 10px 25px rgba(200, 116, 89, 0.35);
       animation: pulseBtn 2s infinite;
     }
     @keyframes pulseBtn {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      50% { transform: scale(1.04); }
     }
-    @keyframes shimmer { to { background-position: 200% center; } }
-
-    /* Основная карточка */
-    .card {
+        .card {
       width: 100%;
-      max-width: 480px;
+      max-width: 470px;
       background: var(--card);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 24px 20px;
+      border-radius: 26px;
+      padding: 26px 22px;
       text-align: center;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 20px 45px rgba(138, 102, 82, 0.14);
       position: relative;
       z-index: 10;
     }
@@ -93,50 +110,68 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       gap: 8px;
     }
     .badge {
-      background: rgba(245, 158, 11, 0.14);
-      color: #fbbf24;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      padding: 5px 12px;
+      background: rgba(230, 164, 180, 0.22);
+      color: #a65369;
+      border: 1px solid rgba(230, 164, 180, 0.45);
+      padding: 5px 13px;
       border-radius: 99px;
       font-size: 0.78rem;
       font-weight: 600;
     }
     .btn-music {
-      background: rgba(59, 130, 246, 0.16);
-      color: #93c5fd;
-      border: 1px solid rgba(59, 130, 246, 0.35);
-      padding: 5px 12px;
+      background: rgba(212, 140, 112, 0.16);
+      color: var(--accent-dark);
+      border: 1px solid rgba(212, 140, 112, 0.35);
+      padding: 5px 13px;
       border-radius: 99px;
       font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
     }
     .btn-music.playing {
-      background: rgba(52, 211, 153, 0.18);
-      color: #6ee7b7;
-      border-color: rgba(52, 211, 153, 0.4);
+      background: rgba(134, 167, 137, 0.25);
+      color: #3d6342;
+      border-color: rgba(134, 167, 137, 0.5);
     }
 
-    h1 { font-size: 1.42rem; margin-bottom: 10px; color: #f8fafc; }
-    .story { color: #cbd5e1; font-size: 0.9rem; line-height: 1.55; margin-bottom: 16px; }
+    .header-flower {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 8px;
+      display: block;
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.48rem;
+      margin-bottom: 10px;
+      color: #4a3b32;
+      line-height: 1.3;
+    }
+    .story {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
 
     .wish-box {
-      background: rgba(15, 23, 42, 0.78);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 16px;
-      padding: 16px 14px;
-      min-height: 88px;
+      background: #fdf6f0;
+      border: 1px solid rgba(212, 140, 112, 0.3);
+      border-radius: 18px;
+      padding: 16px 15px;
+      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 14px;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       line-height: 1.48;
-      color: #fef3c7;
+      color: #5c463b;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
     .wish-box.pop { transform: scale(0.97); opacity: 0.6; }
@@ -145,39 +180,42 @@
       width: 100%;
       padding: 14px 18px;
       border: none;
-      border-radius: 14px;
+      border-radius: 15px;
       font-size: 0.98rem;
-      font-weight: 700;
-      color: #0f172a;
-      background: linear-gradient(135deg, #fde68a 0%, #f59e0b 100%);
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #e29578 0%, #c87459 100%);
       cursor: pointer;
-      box-shadow: 0 8px 22px rgba(245, 158, 11, 0.32);
+      box-shadow: 0 8px 20px rgba(200, 116, 89, 0.28);
     }
     .btn-warm:active { transform: scale(0.98); }
 
-    .counter { margin-top: 8px; font-size: 0.76rem; color: var(--muted); }
+    .counter {
+      margin-top: 8px;
+      font-size: 0.77rem;
+      color: var(--muted);
+    }
 
     .divider {
       height: 1px;
-      background: rgba(148, 163, 184, 0.2);
+      background: rgba(212, 140, 112, 0.22);
       margin: 18px 0;
     }
 
-    /* Секция скретч-карты с мишкой */
     .scratch-title {
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       font-weight: 600;
-      color: #fde68a;
+      color: var(--accent-dark);
       margin-bottom: 10px;
     }
     .scratch-wrap {
       position: relative;
       width: 100%;
       height: 195px;
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
-      border: 1px solid rgba(245, 158, 11, 0.45);
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 1px solid rgba(212, 140, 112, 0.4);
+      background: linear-gradient(135deg, #fffaf6 0%, #f7e6dc 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -187,8 +225,8 @@
       touch-action: none;
     }
     .bear-svg {
-      width: 78px;
-      height: 78px;
+      width: 76px;
+      height: 76px;
       margin-bottom: 6px;
       animation: bearBounce 1.8s ease-in-out infinite;
     }
@@ -197,10 +235,10 @@
       50% { transform: translateY(-5px) rotate(2deg); }
     }
     .secret-content {
-      font-size: 0.96rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #fde68a;
-      line-height: 1.35;
+      color: #a65369;
+      line-height: 1.4;
       z-index: 1;
     }
     canvas#scratchCanvas {
@@ -210,90 +248,125 @@
       height: 100%;
       z-index: 2;
       cursor: pointer;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.7s ease;
     }
 
     .particle {
       position: fixed;
       pointer-events: none;
-      font-size: 22px;
+      font-size: 21px;
       z-index: 999;
       animation: flyUp 1.4s ease-out forwards;
     }
     @keyframes flyUp {
       0% { opacity: 1; transform: translateY(0) scale(0.8); }
-      100% { opacity: 0; transform: translateY(-130px) scale(1.4); }
+      100% { opacity: 0; transform: translateY(-130px) scale(1.35); }
     }
   </style>
 </head>
-<body>
+  <body>
 
-  <!-- Стартовая заставка с кнопкой запуска музыки -->
+  <svg class="bg-flower top-left" viewBox="0 0 200 200" xmlns="http://w3.org">
+    <path d="M20,160 Q70,110 130,40" stroke="#9ab095" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="65" cy="115" rx="18" ry="8" transform="rotate(-35 65 115)" fill="#b7cbb2"/>
+    <ellipse cx="98" cy="78" rx="16" ry="7" transform="rotate(-40 98 78)" fill="#a3ba9e"/>
+    <g transform="translate(130, 42)">
+      <circle cx="0" cy="-16" r="14" fill="#f3c6cf"/>
+      <circle cx="15" cy="-5" r="14" fill="#efb6c2"/>
+      <circle cx="10" cy="13" r="14" fill="#f3c6cf"/>
+      <circle cx="-10" cy="13" r="14" fill="#efb6c2"/>
+      <circle cx="-15" cy="-5" r="14" fill="#f3c6cf"/>
+      <circle cx="0" cy="0" r="8" fill="#f6d58e"/>
+    </g>
+    <g transform="translate(80, 130) scale(0.75)">
+      <circle cx="0" cy="-16" r="14" fill="#f7d6dc"/>
+      <circle cx="15" cy="-5" r="14" fill="#f2c2cc"/>
+      <circle cx="10" cy="13" r="14" fill="#f7d6dc"/>
+      <circle cx="-10" cy="13" r="14" fill="#f2c2cc"/>
+      <circle cx="-15" cy="-5" r="14" fill="#f7d6dc"/>
+      <circle cx="0" cy="0" r="8" fill="#f6d58e"/>
+    </g>
+  </svg>
+
+  <svg class="bg-flower bottom-right" viewBox="0 0 200 200" xmlns="http://w3.org">
+    <path d="M20,160 Q70,110 130,40" stroke="#9ab095" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="65" cy="115" rx="18" ry="8" transform="rotate(-35 65 115)" fill="#b7cbb2"/>
+    <ellipse cx="98" cy="78" rx="16" ry="7" transform="rotate(-40 98 78)" fill="#a3ba9e"/>
+    <g transform="translate(130, 42)">
+      <circle cx="0" cy="-16" r="14" fill="#f3c6cf"/>
+      <circle cx="15" cy="-5" r="14" fill="#efb6c2"/>
+      <circle cx="10" cy="13" r="14" fill="#f3c6cf"/>
+      <circle cx="-10" cy="13" r="14" fill="#efb6c2"/>
+      <circle cx="-15" cy="-5" r="14" fill="#f3c6cf"/>
+      <circle cx="0" cy="0" r="8" fill="#f6d58e"/>
+    </g>
+  </svg>
+
   <div class="welcome-splash" id="splash">
-    <!-- 2. МЕНЯЕМ ИМЯ НА ЗАСТАВКЕ -->
-    <div class="welcome-title">Для Анастасии</div>
-    <div class="welcome-sub">Персональная шкатулка тепла и сюрпризов ✨</div>
-    <button class="btn-open-card" id="openCardBtn">Открыть открытку 💌</button>
+    <div class="welcome-title">Для Анастасии 🌸</div>
+    <div class="welcome-sub">Небольшое приглашение и тёплые слова только для тебя</div>
+    <button class="btn-open-card" id="openCardBtn">Открыть приглашение 💌</button>
   </div>
 
-  <!-- Основная карточка -->
   <div class="card">
     <div class="top-bar">
-      <div class="badge">✨ VIP-открытка</div>
+      <div class="badge">🌷 Приглашение</div>
       <button class="btn-music" id="musicBtn">🎵 Включить песню</button>
     </div>
 
-    <!-- 3. МЕНЯЕМ ЗАГОЛОВОК И ТЕКСТ -->
-    <h1>Анастасия, этот уголок тепла для тебя</h1>
+    <svg class="header-flower" viewBox="0 0 100 100" xmlns="http://w3.org">
+      <path d="M32,68 Q22,52 15,62 Q24,75 38,72 Z" fill="#a3ba9e"/>
+      <path d="M68,68 Q78,52 85,62 Q76,75 62,72 Z" fill="#a3ba9e"/>
+      <circle cx="50" cy="28" r="16" fill="#f4c2cc"/>
+      <circle cx="69" cy="42" r="16" fill="#eeb0bd"/>
+      <circle cx="62" cy="64" r="16" fill="#f4c2cc"/>
+      <circle cx="38" cy="64" r="16" fill="#eeb0bd"/>
+      <circle cx="31" cy="42" r="16" fill="#f4c2cc"/>
+      <circle cx="50" cy="48" r="10" fill="#f7d486"/>
+    </svg>
+
+    <h1>Анастасия, приглашаю тебя на свидание ✨</h1>
     <p class="story">
-      Нажимай на кнопку, чтобы получать тёплые слова в любую минуту, а внизу тебя ждёт секретный билет!
+      Хочу провести с тобой красивый, уютный вечер вдвоём. А пока ты собираешься — нажимай на кнопку за порцией тепла и сотри секретный билет внизу!
     </p>
 
     <div class="wish-box" id="wishBox">
-      Нажми на кнопку ниже, чтобы открыть первое послание ✨
+      Нажми на кнопку ниже, чтобы открыть первое послание 🌸
     </div>
 
-    <button class="btn-warm" id="warmBtn">Получить порцию тепла ✨</button>
+    <button class="btn-warm" id="warmBtn">Получить порцию тепла 🌷</button>
     <div class="counter" id="counter">Открыто посланий: 0 из 65</div>
 
     <div class="divider"></div>
 
-    <div class="scratch-title">🎁 Сотри золотой слой пальцем:</div>
+    <div class="scratch-title">🎁 Сотри защитный слой пальцем:</div>
     <div class="scratch-wrap" id="wrap">
-      <!-- Милый векторный мишка с сердечком под плёнкой -->
       <svg class="bear-svg" viewBox="0 0 120 120" xmlns="http://w3.org">
-        <!-- Ушки -->
-        <circle cx="32" cy="32" r="15" fill="#b45309"/>
-        <circle cx="32" cy="32" r="8" fill="#fde68a"/>
-        <circle cx="88" cy="32" r="15" fill="#b45309"/>
-        <circle cx="88" cy="32" r="8" fill="#fde68a"/>
-        <!-- Голова -->
-        <circle cx="60" cy="58" r="34" fill="#d97706"/>
-        <!-- Мордочка -->
-        <ellipse cx="60" cy="66" rx="15" ry="12" fill="#fef3c7"/>
-        <ellipse cx="60" cy="61" rx="6" ry="4" fill="#1e293b"/>
-        <path d="M54 71 Q60 76 66 71" stroke="#1e293b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-        <!-- Глазки -->
-        <circle cx="47" cy="52" r="3.5" fill="#1e293b"/>
-        <circle cx="73" cy="52" r="3.5" fill="#1e293b"/>
+        <circle cx="32" cy="32" r="15" fill="#c68b59"/>
+        <circle cx="32" cy="32" r="8" fill="#f5ebe0"/>
+        <circle cx="88" cy="32" r="15" fill="#c68b59"/>
+        <circle cx="88" cy="32" r="8" fill="#f5ebe0"/>
+        <circle cx="60" cy="58" r="34" fill="#d5a373"/>
+        <ellipse cx="60" cy="66" rx="15" ry="12" fill="#faedcd"/>
+        <ellipse cx="60" cy="61" rx="6" ry="4" fill="#4a3b32"/>
+        <path d="M54 71 Q60 76 66 71" stroke="#4a3b32" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="47" cy="52" r="3.5" fill="#4a3b32"/>
+        <circle cx="73" cy="52" r="3.5" fill="#4a3b32"/>
         <circle cx="48" cy="51" r="1.2" fill="#ffffff"/>
         <circle cx="74" cy="51" r="1.2" fill="#ffffff"/>
-        <!-- Сердечко в лапках -->
-        <path d="M60 112 C60 112 36 96 36 82 C36 74 43 69 50 73 C55 76 60 81 60 81 C60 81 65 76 70 73 C77 69 84 74 84 82 C84 96 60 112 60 112 Z" fill="#ef4444"/>
+        <path d="M60 112 C60 112 36 96 36 82 C36 74 43 69 50 73 C55 76 60 81 60 81 C60 81 65 76 70 73 C77 69 84 74 84 82 C84 96 60 112 60 112 Z" fill="#e06d83"/>
       </svg>
 
-      <!-- 4. ЗДЕСЬ ПИШЕМ СЕКРЕТНЫЙ ПОДАРОК ИЛИ ПРИЗНАНИЕ -->
       <div class="secret-content">
-        ✨ Сюрприз: сегодня вечером в 20:00 я жду тебя на свидание! ✨<br>
-        <span style="font-size: 0.78rem; font-weight: 400; color: #cbd5e1;">Просто улыбнись, всё остальное я уже подготовил 💛</span>
+        🌸 Я зайду за тобой? 🌸<br>
+        <span style="font-size: 0.82rem; font-weight: 500; color: #7a6256;">Напиши мне, во сколько тебе будет удобно 💛</span>
       </div>
       <canvas id="scratchCanvas"></canvas>
     </div>
   </div>
 
-  <!-- 5. ПЕСНЯ (файл song.mp3 рядом с index.html) -->
-  <audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
-    <script>
+  <audio id="bgMusic" src="stafford63-amp-radmila-maro-chestno.mp3" loop preload="auto"></audio>
+      <script>
     const wishes = [
       "Пусть сегодняшний день принесёт тебе повод улыбнуться просто так, без всякой причины ✨",
       "Ты умеешь делать мир вокруг светлее одним своим присутствием.",
@@ -361,7 +434,8 @@
       "Ты сияешь ярче любых звёзд — просто оставайся собой ✨",
       "И самое главное: знай, что о тебе думают с огромным теплом и желают тебе самого большого счастья!"
     ];
-          const splash = document.getElementById('splash');
+        
+    const splash = document.getElementById('splash');
     const openCardBtn = document.getElementById('openCardBtn');
     const wishBox = document.getElementById('wishBox');
     const warmBtn = document.getElementById('warmBtn');
@@ -373,18 +447,23 @@
     let openedCount = 0;
     let isPlaying = false;
 
-    function playMusicAuto() {
-      if (!isPlaying) {
-        bgMusic.play().then(() => {
-          isPlaying = true;
-          musicBtn.textContent = '⏸ Пауза';
-          musicBtn.classList.add('playing');
-        }).catch(() => {});
-      }
+    function startMusic() {
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        musicBtn.textContent = '⏸ Пауза';
+        musicBtn.classList.add('playing');
+      }).catch(() => {});
+    }
+
+    function stopMusic() {
+      bgMusic.pause();
+      isPlaying = false;
+      musicBtn.textContent = '🎵 Включить песню';
+      musicBtn.classList.remove('playing');
     }
 
     function spawnParticles(x, y, count = 6) {
-      const icons = ['✨', '💛', '🌟', '💫', '🧸', '❤️'];
+      const icons = ['🌸', '🌷', '✨', '💛', '🧸', '💐'];
       for (let i = 0; i < count; i++) {
         const el = document.createElement('div');
         el.className = 'particle';
@@ -398,24 +477,20 @@
 
     openCardBtn.addEventListener('click', (e) => {
       splash.classList.add('hide');
-      playMusicAuto();
+      startMusic();
       spawnParticles(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2, 10);
       setTimeout(initCanvas, 50);
     });
 
     musicBtn.addEventListener('click', () => {
       if (!isPlaying) {
-        playMusicAuto();
+        startMusic();
       } else {
-        bgMusic.pause();
-        isPlaying = false;
-        musicBtn.textContent = '🎵 Включить песню';
-        musicBtn.classList.remove('playing');
+        stopMusic();
       }
     });
 
     warmBtn.addEventListener('click', (e) => {
-      playMusicAuto();
       if (remaining.length === 0) {
         remaining = [...wishes];
         openedCount = 0;
@@ -446,14 +521,14 @@
       canvas.width = wrap.offsetWidth;
       canvas.height = wrap.offsetHeight;
       const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grad.addColorStop(0, '#d97706');
-      grad.addColorStop(0.5, '#fbbf24');
-      grad.addColorStop(1, '#b45309');
+      grad.addColorStop(0, '#e6b8a2');
+      grad.addColorStop(0.5, '#f2d3c2');
+      grad.addColorStop(1, '#d49a89');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#0f172a';
-      ctx.font = 'bold 16px sans-serif';
+      ctx.fillStyle = '#4a3b32';
+      ctx.font = '600 15px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('✨ СОТРИ МЕНЯ ПАЛЬЦЕМ ✨', canvas.width / 2, canvas.height / 2 + 5);
     }
@@ -462,21 +537,20 @@
       if (isRevealed) return;
       isRevealed = true;
       canvas.style.opacity = '0';
-      setTimeout(() => { canvas.style.display = 'none'; }, 600);
+      setTimeout(() => { canvas.style.display = 'none'; }, 700);
       const rect = wrap.getBoundingClientRect();
       spawnParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, 14);
     }
 
     function scratch(x, y) {
       if (isRevealed) return;
-      playMusicAuto();
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 26, 0, Math.PI * 2);
+      ctx.arc(x, y, 21, 0, Math.PI * 2);
       ctx.fill();
 
       scratchMoves++;
-      if (scratchMoves > 45) {
+      if (scratchMoves > 75) {
         revealAll();
       }
     }
@@ -501,4 +575,3 @@
   </script>
 </body>
 </html>
-
